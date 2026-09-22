@@ -106,9 +106,3 @@ media/
 *.pyc
 *.db
 *.pid
-
-
-# Only for Development 
-**/migrations/**
-**/migrations
-**/migrations/__init__.py
