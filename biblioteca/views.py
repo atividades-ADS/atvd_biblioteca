@@ -10,4 +10,4 @@ def listar_livros(request):
         'livros': livros
     }
     
-    return render(request, 'listar_livros.html', contexto)
+    return render(request, 'biblioteca/listar_livros.html', contexto)
