@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Livros</title>
+</head>
+<body>
+    <h1>Lista de Livros</h1>
+    <ul id="lista">
+        {% for livro in livros %}
+            <li>
+                {{ livro.titulo }} - {{ livro.autor }}.
+                {{ livro.ano_publicacao }}.
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
