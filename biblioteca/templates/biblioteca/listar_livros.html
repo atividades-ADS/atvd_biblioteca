@@ -10,7 +10,8 @@
     <ul id="lista">
         {% for livro in livros %}
             <li>
-                {{ livro.titulo }} - <a href="{% url 'details_author' livro.author.id %}">{{ livro.author }}</a>.
+                {{ livro.titulo }} - {% for author in livros.authors %}<a href="{% url 'details_author' author.id %}">{{ author }}</a>.
+                {% endfor %}
                 {{ livro.ano_publicacao }}.
             </li>
         {% endfor %}
