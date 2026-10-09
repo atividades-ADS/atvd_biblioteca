@@ -1,0 +1,1 @@
+Utilizei o on_delete=models.SET_NULL pois ao apagar um autor não é preciso apagar os livros dele. Nesse caso o campo author ne livro vai ser reescrito com null.
