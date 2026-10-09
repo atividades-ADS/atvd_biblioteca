@@ -6,12 +6,14 @@
     <title>Lista de Livros</title>
 </head>
 <body>
-    <h1>Lista de Livros</h1>
+    <h1>{{ author }}</h1>
+    <p>Nacionalidade: {{ author.nationality }}</p>
+
+    <p>Lista de Livros:</p>
     <ul id="lista">
         {% for livro in livros %}
             <li>
-                {{ livro.titulo }} - <a href="{% url 'details_author' livro.author.id %}">{{ livro.author }}</a>.
-                {{ livro.ano_publicacao }}.
+                {{ livro.titulo }} - {{ livro.ano_publicacao }}.
             </li>
         {% endfor %}
     </ul>

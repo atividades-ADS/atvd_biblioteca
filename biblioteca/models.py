@@ -12,7 +12,7 @@ class Author(models.Model):
         verbose_name_plural = "authors"
 
     def __str__(self):
-        return f"{self.name} - {self.nationality}"
+        return f"{self.name}"
 
 
 class Category(models.Model):
@@ -30,7 +30,7 @@ class Livro(models.Model):
     ano_publicacao = models.IntegerField()
     disponivel = models.BooleanField(default=True)
     author = models.ForeignKey(Author, related_name="books", null=True, on_delete=models.SET_NULL)
-    categories = models.ManyToManyField(Category, null=True)
+    categories = models.ManyToManyField(Category)
 
     def __str__(self):
         return f"{self.titulo} - {self.ano_publicacao} - {'Disponível' if self.disponivel else 'Indisponível'}"
