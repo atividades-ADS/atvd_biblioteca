@@ -7,6 +7,8 @@
 </head>
 <body>
     <h1>Autor: {{ author.name }}</h1>
+    <h2>Nacionalidade: {{ author.nationality }}</h2>
+    <h2>Livros do Autor</h2>
     <ul id="lista">
         {% for book in books %}
             <li>

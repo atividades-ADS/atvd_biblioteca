@@ -11,11 +11,11 @@
         {% for book in books %}
             <li>
                 {{ book.title }} - 
-                {% if book.authors %}
-                    <a href="{% url 'autor' book.authors.id %}">{{ book.authors.name }}.</a>
-                {% else %}
+                {% for author in book.authors.all %}
+                    <a href="{% url 'autor' author.id %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% empty %}
                     Autor não disponível.
-                {% endif %}
+                {% endfor %}
                 {{ book.year }}.
             </li>
         {% endfor %}
