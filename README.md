@@ -12,3 +12,14 @@ Ordem das ações:
 6. gerar a migração com makemigrations e aplicar com migrate
 7. trocar o nome de authors_tmp para authors
 8. gerar a migração com makemigrations e aplicar com migrate
+
+# Que dados se perdem quando a migração é revertida? Por quê?
+
+Se houver uma reverção para uma migração antes de haver o campo ManyToMany os dados de autores simplesmente
+seriam perdidos, pois ele apagaria a tabela intermediaria que une dois campos quando há uma relação
+ManyToMany, perdendo os dados que estvam nessa tabela
+
+# Com ManyToMany, o que acontece com um livro quando o seu único autor é apagado? Como garantir que todo livro tenha pelo menos um autor?
+
+no momento, nada acontece, um livro pode existir sem um autor mas podemos adicionar uma restrição ao livro para que permaneça com pelo menos um autor,
+impedindo que o autor seja apagado caso ele seja o unico autor de algum livro.
