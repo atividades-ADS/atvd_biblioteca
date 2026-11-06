@@ -29,7 +29,7 @@ class Livro(models.Model):
     titulo = models.CharField(max_length=100)
     ano_publicacao = models.IntegerField()
     disponivel = models.BooleanField(default=True)
-    author = models.ForeignKey(Author, related_name="books", null=True, on_delete=models.SET_NULL)
+    authors = models.ManyToManyField(Author, related_name="books")
     categories = models.ManyToManyField(Category)
 
     def __str__(self):

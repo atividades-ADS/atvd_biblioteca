@@ -9,16 +9,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Livro)
 class LivroAdmin(admin.ModelAdmin):
-    list_display = ["titulo", "author", "ano_publicacao", "disponivel"]
-    search_fields = ["titulo", "author", ]
+    list_display = ["titulo", "authors__name", "ano_publicacao", "disponivel"]
+    search_fields = ["titulo", "authors__name", ]
     list_filter = ["disponivel", "categories"]
     filter_horizontal = ["categories"]
-
-class LivrosInline(admin.TabularInline):
-    model = Livro
-    extra = 1
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ["name", "nationality"]
-    inlines = [LivrosInline]

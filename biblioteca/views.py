@@ -13,7 +13,7 @@ def listar_livros(request):
 
 def author_details(request, author_id):
     author = get_object_or_404(Author, id=author_id)
-    livros = Livro.objects.filter(author__id=author_id)
+    livros = Livro.objects.filter(authors__id=author_id)
     
     contexto = {'author': author, 'livros':livros}
     
