@@ -6,6 +6,7 @@
     <title>Lista de Livros</title>
 </head>
 <body>
+    <a href="{% url 'listar_livros' %}"><button>⬅️ Voltar</button></a>
     <h1>{{ author }}</h1>
     <p>Nacionalidade: {{ author.nationality }}</p>
 

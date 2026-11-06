@@ -6,12 +6,12 @@
     <title>Lista de Livros</title>
 </head>
 <body>
+    <a href="{% url 'create_author' %}"><button>➕ Novo Autor</button></a>
     <h1>Lista de Livros</h1>
     <ul id="lista">
         {% for livro in livros %}
             <li>
-                {{ livro.titulo }} - {% for author in livros.authors %}<a href="{% url 'details_author' author.id %}">{{ author }}</a>.
-                {% endfor %}
+                {{ livro.titulo }} - <a href="{% url 'details_author' livro.author.id %}">{{ livro.author }}</a>.
                 {{ livro.ano_publicacao }}.
             </li>
         {% endfor %}

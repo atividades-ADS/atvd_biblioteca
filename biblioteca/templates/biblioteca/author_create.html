@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de autor</title>
+</head>
+<body>
+    <h1>Criação de autor</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.name.label_tag }}
+        {{ form.name }}
+        {% for error in form.name.errors %}
+            <span style="color: red">{{ error }}</span>
+        {% endfor %}
+
+        {{ form.nationality.label_tag }}
+        {{ form.nationality }}
+        {% for error in form.nationality.errors %}
+            <span style="color: red">{{ error }}</span>
+        {% endfor %}
+
+        <button type="submit"> Criar</button>
+    </form>
+
+</body>
+</html>
