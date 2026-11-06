@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autor</title>
-</head>
-<body>
-    <h1>Autor: {{ author.name }}</h1>
-    <h2>Nacionalidade: {{ author.nationality }}</h2>
-    <h2>Livros do Autor</h2>
-    <ul id="lista">
-        {% for book in books %}
-            <li>
-                titulo: {{ book.title }} /
-                ano: {{ book.year }}.
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+<title>Lista de Livros</title>
+{% endblock %}
+{% block main %}
+<h1>Autor: {{ author.name }}</h1>
+<h2>Nacionalidade: {{ author.nationality }}</h2>
+<h2>Livros do Autor</h2>
+<ul id="lista">
+    {% for book in books %}
+    <li>
+        titulo: {{ book.title }} /
+        ano: {{ book.year }}.
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

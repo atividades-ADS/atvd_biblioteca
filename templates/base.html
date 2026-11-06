@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Default</title>
+    {% endblock %}
+</head>
+
+<body>
+    {% block header %}
+    <div style="display: flex; flex-direction: row; gap: 1rem;">
+        <a href="{% url 'livros' %}" >
+            Listagem de livros
+        </a>
+        <a href="{% url 'criar_livro' %}" >
+            criar livro
+        </a>
+        <a href="{% url 'criar_autor' %}" >
+            adicionar autor
+        </a>
+    </div>
+    {% endblock %}
+
+    {% block main %}
+    {% endblock %}
+    
+    {% block footer %}
+    {% endblock %}
+</body>
+
+</html>

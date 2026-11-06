@@ -23,3 +23,10 @@ ManyToMany, perdendo os dados que estvam nessa tabela
 
 no momento, nada acontece, um livro pode existir sem um autor mas podemos adicionar uma restrição ao livro para que permaneça com pelo menos um autor,
 impedindo que o autor seja apagado caso ele seja o unico autor de algum livro.
+
+
+
+# O formulário está protegido contra requisições forjadas. Teste e anote no README o que acontece quando essa proteção é removida do template.
+
+O {% csrf_token %} protege o formulário de requisições forjada, o django rejeita requisições feitas sem essa proteção, não permitindo que o methodo POST 
+funcione sem essa proteção.

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Criar livro</title>
+{% endblock %}
+{% block main %}
+    <h2>
+        Criar livro
+    </h2>
+    <form action="{% url 'criar_livro' %}" method="post" >
+        {% csrf_token %}
+
+        {{ form }}
+        <button type="submit" >
+            Criar
+        </button>
+
+    </form>
+
+{% endblock %}

@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Livros</title>
-</head>
-<body>
-    <h1>Lista de Livros</h1>
-    <ul id="lista">
-        {% for book in books %}
-            <li>
-                {{ book.title }} - 
-                {% for author in book.authors.all %}
-                    <a href="{% url 'autor' author.id %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}
-                {% empty %}
-                    Autor não disponível.
-                {% endfor %}
-                {{ book.year }}.
-            </li>
+{% extends 'base.html' %}
+{% block title %}
+<title>Lista de Livros</title>
+{% endblock %}
+{% block main %}
+<h1>Lista de Livros</h1>
+<ul id="lista">
+    {% for book in books %}
+    <li>
+        {{ book.title }} -
+        {% for author in book.authors.all %}
+        <a href="{% url 'autor' author.id %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}
+        {% empty %}
+        Autor não disponível.
         {% endfor %}
-    </ul>
-</body>
-</html>
+        {{ book.year }}.
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'criar_autor' %}" >
+    adicionar autor
+</a>
+{% endblock %}

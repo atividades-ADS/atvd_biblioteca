@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Adicionar autor</title>
+{% endblock %}
+{% block main %}
+<h2>
+    Adicionar autor
+</h2>
+<form action="{% url 'criar_autor' %}" method="post">
+    {% csrf_token %}
+    <div>
+        <div>
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+
+        <div>
+            {{ form.nationality.label_tag }}
+            {{ form.nationality }}
+            {% for error in form.nationality.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <button type="submit">
+        Adicionar
+    </button>
+
+</form>
+
+{% endblock %}
