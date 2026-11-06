@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
+from .forms import *
 
 # Create your views here.
 
@@ -22,3 +23,16 @@ def author_detail(request, author_id):
     }
     
     return render(request, 'biblioteca/autor.html', contexto)
+
+def author_create(request):
+    if request.method == "POST":
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            Author.objects.create(
+                name = form.cleaned_data["name", "category"]
+            )
+            return redirect("livros")
+    else:
+        form = AuthorForm()
+    
+    return render(request, "biblioteca/criar_autor.html", {"form": form})
