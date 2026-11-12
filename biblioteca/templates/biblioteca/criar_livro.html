@@ -4,14 +4,15 @@
 {% endblock %}
 {% block main %}
     <h2>
-        Criar livro
+        {{ titulo_pagina }}
     </h2>
-    <form action="{% url 'criar_livro' %}" method="post" >
+    <form action="" method="post" >
         {% csrf_token %}
 
         {{ form }}
+        <input type="hidden" name="next" value="{{ next }}">
         <button type="submit" >
-            Criar
+            {{ texto_botao }}
         </button>
 
     </form>

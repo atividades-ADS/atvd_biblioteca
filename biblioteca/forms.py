@@ -45,3 +45,15 @@ class BookForm(forms.Form):
     )
     year = forms.IntegerField(label="Ano de publicação")
     available = forms.BooleanField(label="Disponível")
+
+
+
+class BookModelForm(forms.ModelForm):
+
+    class Meta: 
+        model = Book
+        fields = "__all__"
+        widgets = {
+            "category": forms.CheckboxSelectMultiple,
+            "authors": forms.CheckboxSelectMultiple,
+        }

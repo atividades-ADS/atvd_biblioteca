@@ -11,6 +11,7 @@
     <li>
         titulo: {{ book.title }} /
         ano: {{ book.year }}.
+        <a href="{% url 'editar_livro' book.id %}?next={% url 'autor' author.id %}">editar</a>
     </li>
     {% endfor %}
 </ul>
