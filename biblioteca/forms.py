@@ -1,6 +1,8 @@
 from django import forms
 from .models import Author, Category, Book
 
+import datetime
+
 
 class AuthorForm(forms.Form):
     name = forms.CharField(
@@ -49,6 +51,19 @@ class BookForm(forms.Form):
 
 
 class BookModelForm(forms.ModelForm):
+    
+    def clean_title(self):
+        title = self.cleaned_data["title"].strip()
+        if len(title) < 3:
+            raise forms.ValidationError("O titulo deve ter pelo menos 3 caracteres!")
+        return title
+            
+    def clean_year(self):
+        year = self.cleaned_data["year"]
+        if year > datetime.date.today().year:
+            raise forms.ValidationError("O ano não pode ser posterior ao ano atual")
+        return year
+        
 
     class Meta: 
         model = Book
