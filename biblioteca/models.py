@@ -30,7 +30,7 @@ class Livro(models.Model):
     ano_publicacao = models.IntegerField()
     disponivel = models.BooleanField(default=True)
     authors = models.ManyToManyField(Author, related_name="books")
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category, blank=True)
 
     def __str__(self):
         return f"{self.titulo} - {self.ano_publicacao} - {'Disponível' if self.disponivel else 'Indisponível'}"

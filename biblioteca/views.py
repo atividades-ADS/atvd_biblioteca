@@ -31,3 +31,33 @@ def author_create(request):
         form = AuthorForm()
 
     return render(request, "biblioteca/author_create.html", {"form": form})
+
+def livro_create_or_edit(request, pk=None, author_id=None):
+
+    if pk:
+        livro = get_object_or_404(Livro, pk=pk)
+        page_intent = "Editar"
+        page_title = "Editar livro"
+    else:
+        livro = Livro()
+        page_intent = "Criar livro"
+        page_title = "Novo livro"
+
+    if request.method == "POST":
+        form = LivroModelForm(request.POST, instance=livro)
+
+        if form.is_valid():
+            livro = form.save()
+            if author_id:
+                return redirect("details_author", author_id=author_id)
+            else:
+                return redirect("listar_livros")
+
+    else:
+        form = LivroModelForm(instance=livro)
+
+    context = {"form": form,
+               "page_intent": page_intent,
+               "page_title": page_title,}
+
+    return render(request, "biblioteca/forms_livros.html", context)

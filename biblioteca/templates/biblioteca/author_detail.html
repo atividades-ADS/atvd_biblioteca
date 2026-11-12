@@ -15,6 +15,7 @@
         {% for livro in livros %}
             <li>
                 {{ livro.titulo }} - {{ livro.ano_publicacao }}.
+                <a href="{% url 'livro_edit_author' livro.id author.id %}">Editar</a>
             </li>
         {% endfor %}
     </ul>

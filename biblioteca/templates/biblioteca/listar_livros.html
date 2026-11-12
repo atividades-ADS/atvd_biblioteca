@@ -7,6 +7,7 @@
 </head>
 <body>
     <a href="{% url 'create_author' %}"><button>➕ Novo Autor</button></a>
+    <a href="{% url 'livro_create' %}"><button>➕ Novo Livro</button></a>
     <h1>Lista de Livros</h1>
     <ul id="lista">
         {% for livro in livros %}
@@ -17,6 +18,7 @@
                 {% endfor %}.
 
                 {{ livro.ano_publicacao }}.
+                <a href="{% url 'livro_edit' livro.id %}">Editar</a>
             </li>
         {% endfor %}
     </ul>
