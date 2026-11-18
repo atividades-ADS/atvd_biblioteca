@@ -9,10 +9,11 @@ class AuthorForm(forms.Form):
 class LivroModelForm(forms.ModelForm):
     class Meta:
         model = Livro
-        fields = ["titulo", "authors", "ano_publicacao", "disponivel", "categories"]
-        labels = {"titulo": "Título", "authors": "Autores", "ano_publicacao": "Ano de publicação", "disponivel": "Disponível?", "categories": "Categorias"}
+        fields = ["capa", "titulo", "authors", "ano_publicacao", "disponivel", "categories", "paginas", "isbn"]
+        labels = {"capa": "Capa","titulo": "Título", "authors": "Autores", "ano_publicacao": "Ano de publicação", "disponivel": "Disponível?", "categories": "Categorias", "paginas": "Número de páginas", "isbn": "ISBN"}
         widgets = {
             'categories': forms.CheckboxSelectMultiple(),
+            'capa': forms.ClearableFileInput(),
         }
 
     def clean_titulo(self):

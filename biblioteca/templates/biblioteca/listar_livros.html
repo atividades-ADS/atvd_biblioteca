@@ -12,6 +12,9 @@
     <ul id="lista">
         {% for livro in livros %}
             <li>
+                {% if livro.capa %}
+                    <img src="{{ livro.capa.url }}" alt="{{ livro.titulo }}" width="80px">
+                {% endif %}
                 {{ livro.titulo }} -
                 {% for author in livro.authors.all %}
                     <a href="{% url 'details_author' author.id %}">{{ author }}</a>

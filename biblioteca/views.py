@@ -44,7 +44,7 @@ def livro_create_or_edit(request, pk=None, author_id=None):
         page_title = "Novo livro"
 
     if request.method == "POST":
-        form = LivroModelForm(request.POST, instance=livro)
+        form = LivroModelForm(request.POST, request.FILES, instance=livro)
 
         if form.is_valid():
             livro = form.save()
@@ -57,7 +57,8 @@ def livro_create_or_edit(request, pk=None, author_id=None):
         form = LivroModelForm(instance=livro)
 
     context = {"form": form,
-               "page_intent": page_intent,
-               "page_title": page_title,}
+            "page_intent": page_intent,
+            "page_title": page_title,
+            }
 
     return render(request, "biblioteca/forms_livros.html", context)

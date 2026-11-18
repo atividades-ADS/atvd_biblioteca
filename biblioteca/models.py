@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
+from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator, FileExtensionValidator
+from .validators import validate_file_size
 from django.utils import timezone
 
 
@@ -27,6 +28,10 @@ class Category(models.Model):
 
 
 class Livro(models.Model):
+    capa = models.ImageField(upload_to="capas/", blank=True, null=True, validators=[
+        validate_file_size,
+        FileExtensionValidator(["jpg", "jpeg", "png"]),
+    ])
     titulo = models.CharField(
         max_length=100,
         validators=[
@@ -44,7 +49,9 @@ class Livro(models.Model):
         MaxValueValidator(5000),
         ],
     )
-    isbn = models.CharField(null=True, blank=True, max_length=13)
+    isbn = models.CharField(null=True, blank=True, max_length=13, validators=[
+        MinLengthValidator(13),
+    ])
     disponivel = models.BooleanField(default=True)
     authors = models.ManyToManyField(Author, related_name="books")
     categories = models.ManyToManyField(Category, blank=True)
