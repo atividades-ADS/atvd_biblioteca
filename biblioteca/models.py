@@ -1,6 +1,7 @@
 from django.db import models
+from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
+from django.utils import timezone
 
-# Create your models here.
 
 
 class Author(models.Model):
@@ -26,8 +27,24 @@ class Category(models.Model):
 
 
 class Livro(models.Model):
-    titulo = models.CharField(max_length=100)
-    ano_publicacao = models.IntegerField()
+    titulo = models.CharField(
+        max_length=100,
+        validators=[
+        MinLengthValidator(3)
+        ],
+    )
+    ano_publicacao = models.IntegerField(
+        validators=[
+            MinValueValidator(1450),
+            MaxValueValidator(timezone.now().year),
+        ]
+    )
+    paginas = models.IntegerField(null=True, blank=True, validators=[
+        MinValueValidator(1),
+        MaxValueValidator(5000),
+        ],
+    )
+    isbn = models.CharField(null=True, blank=True, max_length=13)
     disponivel = models.BooleanField(default=True)
     authors = models.ManyToManyField(Author, related_name="books")
     categories = models.ManyToManyField(Category, blank=True)
