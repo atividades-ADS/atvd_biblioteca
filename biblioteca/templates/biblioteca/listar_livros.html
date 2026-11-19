@@ -8,12 +8,17 @@
 <body>
     <a href="{% url 'create_author' %}"><button>➕ Novo Autor</button></a>
     <a href="{% url 'livro_create' %}"><button>➕ Novo Livro</button></a>
+    <a href="{% url 'sobre' %}"><button>👤 Sobre</button></a>
+    <div style="display: flex; gap: 16px;">
+        <h2>Total de Livros: {{ total_livros }}</h2>
+        <h2>Disponíveis: {{ total_livros_disponivels }}</h2>
+    </div>
     <h1>Lista de Livros</h1>
     <ul id="lista">
         {% for livro in livros %}
             <li>
                 {% if livro.capa %}
-                    <img src="{{ livro.capa.url }}" alt="{{ livro.titulo }}" width="80px">
+                    <img src="{{ livro.capa.url }}" alt="{{ livro.titulo }}" width="80px" height="80px">
                 {% endif %}
                 {{ livro.titulo }} -
                 {% for author in livro.authors.all %}
@@ -21,7 +26,8 @@
                 {% endfor %}.
 
                 {{ livro.ano_publicacao }}.
-                <a href="{% url 'livro_edit' livro.id %}">Editar</a>
+                <a href="{% url 'livro_edit' livro.id %}"><button>Editar</button></a>
+                <a href="{% url 'livro_delete' livro.id %}"><button>Exlcuir</button></a>
             </li>
         {% endfor %}
     </ul>

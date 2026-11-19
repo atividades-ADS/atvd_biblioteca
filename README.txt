@@ -22,3 +22,15 @@ c. Pois o excluir só exlcui o caminho que estava armazenado no banco de dados, 
 
 d. pois a extensão pode ser forjada, então o ideal é realmente checar o tipo de arquivo.
 Além de proteção sobre o tipo é importante limite de tamanho.
+
+
+3.3-
+
+a. O dispatch() da CBV olha o método HTTP e chama get() ou post(). No post(), o FormMixin testa form.is_valid() e, se inválido, chama form_invalid(), que re-renderiza o mesmo template com o form e seus erros (status 200, nada é salvo).
+
+b. Pois o CreateView já possui o request.FILES embutido.
+
+c. Porque o POST é o método que autoriza alteração de estado. Se a exclusão fosse por GET, prefetch de navegadores, crawlers e um simples <img src="..."> de outro site (CSRF) apagariam dados sem o usuário confirmar.
+
+d. Vantagem: reaproveitamento de comportamento comum (form, redirect, 404, paginação, mixins), com menos código repetido. Desvantagem: fluxo implícito e espalhado entre mixins/MRO, mais difícil de ler e depurar. Escolheria FBVs para quando o mais importante são views simples/únicas ou quando a legibilidade pesa mais.
+

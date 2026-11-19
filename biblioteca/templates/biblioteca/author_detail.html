@@ -12,13 +12,13 @@
 
     <p>Lista de Livros:</p>
     <ul id="lista">
-        {% for livro in livros %}
+        {% for livro in author.books.all %}
             <li>
                 {% if livro.capa %}
                     <img src="{{ livro.capa.url }}" alt="{{ livro.titulo }}" width="80px">
                 {% endif %}
                 {{ livro.titulo }} - {{ livro.ano_publicacao }}.
-                <a href="{% url 'livro_edit_author' livro.id author.id %}">Editar</a>
+                <a href="{% url 'livro_edit_author' livro.id author.id %}"><button>Editar</button></a>
             </li>
         {% endfor %}
     </ul>
