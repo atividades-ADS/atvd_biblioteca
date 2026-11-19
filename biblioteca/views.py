@@ -49,7 +49,7 @@ def livros_create_modelform(request, pk=None, ):
     next_url = request.POST.get('next') or request.GET.get('next', '')
         
     if request.method == "POST":
-        form = BookModelForm(request.POST, instance=book)
+        form = BookModelForm(request.POST, request.FILES, instance=book)
         if form.is_valid():
             with transaction.atomic():
                 book = form.save()

@@ -1,4 +1,6 @@
 from django import forms
+
+from biblioteca.validators import validate_min_length, validate_year
 from .models import Author, Category, Book
 
 import datetime
@@ -32,7 +34,7 @@ class CategoryForm(forms.Form):
 
 
 class BookForm(forms.Form):
-    title = forms.CharField(max_length=100, label="Titulo")
+    title = forms.CharField(max_length=100, label="Titulo", validators=[validate_min_length])
     author = forms.ModelMultipleChoiceField(
         label="Autores",
         queryset=Author.objects.all(),
@@ -45,7 +47,7 @@ class BookForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,  # ou forms.SelectMultiple
         required=True,
     )
-    year = forms.IntegerField(label="Ano de publicação")
+    year = forms.IntegerField(label="Ano de publicação", validators=[validate_year])
     available = forms.BooleanField(label="Disponível")
 
 

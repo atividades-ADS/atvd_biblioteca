@@ -7,6 +7,11 @@
 <ul id="lista">
     {% for book in books %}
     <li>
+        {% if book.capa %}
+            <img src="{{ book.capa.url }}" alt="Capa do livro {{ book.title }}" width="64">
+        {% else %}
+            <p>Capa não disponível.</p>
+        {% endif %}
         {{ book.title }} -
         {% for author in book.authors.all %}
         <a href="{% url 'autor' author.id %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}
