@@ -70,3 +70,13 @@ ao editar uma capa ou apagar o livro o caminho para o arquivo correspondente dei
 a longo prazo, pode ocasionar um grande volume de dados orfãos consumindo espaço em disco.
 
 d) A extensão do arquivo não basta pois o lado do cliente que escolhe o nome e extensão para um arquivo, podendo sem grandes dificuldades apenas renomear o arquivo e mudar a extensão. PAra resolver esse problema é interressante que o backend leia os primeiros bytes do arquivo para entender sua real natureza. Além disso, uma boa pratica é evitar que a pasta de media tenha alguma permissão execução, evitando que algum possivel script que passe tenha capacidade de fazer algo de lá; Existem outros cuidados a serem feitos como evitar a descompressão de dados em loops grandes, limitando a 1 ou 2 vezes caso o sistema precise aceitar arquivos compactados, se não precisar é bom evitar que o sistema faça alguma descompactação automatica para evitar bombas zip
+
+3.2 a) O CreateView faz esse if internamente: se for POST, chama post(), form_valid(), salvando; ou form_invalid() (re-renderiza o formulário com os erros e os dados preenchidos). Se for GET, apenas mostra o formulário vazio.
+
+b) Porque a CreateView passa request.POST e request.FILES para o form em get_form_kwargs(). O ModelForm com ImageField já espera os arquivos, só precisando mexer nisso manualmente em FBV.
+
+c) Porque exclusão é uma ação perigosa e potencialmente destrutica; GET precisa ser seguro, não devendo alterar estados. Se excluísse via GET, qualquer prefetch de link, poderia apagar dados sem intenção do usuário ou de forma maliciosa. O POST + confirmação (com CSRF) garante intenção explícita.
+
+d) Vantagem do ClassBasedView(CBV): reuso e menos código, CRUD inteiro com poucas linhas, herança de comportamentos (login required, paginação, permissões).
+Desvantagem (CBV): fluxo implícito, todo feito por baixo dos panos pela classe do django, mais difícil de depurar e de ler para iniciantes, alem de ficar tão grande quanto FBV quando se tem muitas coisas especificas naquela view;
+Escolheria FBV quando a lógica é muito específica (ex.: um endpoint que faz várias operações condicionais, cálculos antes de salvar, integração com API externa), nesse caso a função explícita é mais clara que empilhar mixins.

@@ -98,7 +98,16 @@ class Listar_livros(ListView):
     context_object_name = 'books'
     
     def get_queryset(self):
-        return Book.objects.order_by("-title")[:10]
+        return Book.objects.order_by("-title")
+    
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        context["availables"] = Book.objects.filter(available=True).count()
+
+        return context
+        
     
 class Livro_detail(DetailView):
     model = Book
