@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<p>Excluir "{{ book.title }}"?</p>
+
+<form action="" method="post">
+
+{% csrf_token %}
+
+<button type="submit">Confirmar</button>
+
+</form>
+
+<a href="{% url 'livros' %}">Cancelar</a>
+
+{% endblock %}

@@ -3,18 +3,26 @@
 <title>Criar livro</title>
 {% endblock %}
 {% block main %}
-    <h2>
-        {{ titulo_pagina }}
-    </h2>
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+<h2>
+    {% if object %}
+    Editar {{ object }}
+    {% else %}
+    Cadastrar Novo livro
+    {% endif %}
+</h2>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
-        {{ form }}
-        <input type="hidden" name="next" value="{{ next }}">
-        <button type="submit" >
-            {{ texto_botao }}
-        </button>
+    {{ form }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit">
+        {% if object %}
+        Salvar
+        {% else %}
+        Criar
+        {% endif %}
+    </button>
 
-    </form>
+</form>
 
 {% endblock %}

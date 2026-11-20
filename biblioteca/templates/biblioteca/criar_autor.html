@@ -4,7 +4,11 @@
 {% endblock %}
 {% block main %}
 <h2>
-    Adicionar autor
+    {% if object %}
+    Editar {{ object }}
+    {% else %}
+    Cadastrar Novo autor
+    {% endif %}
 </h2>
 <form action="{% url 'criar_autor' %}" method="post">
     {% csrf_token %}
@@ -25,7 +29,11 @@
     </div>
 
     <button type="submit">
-        Adicionar
+        {% if object %}
+            Salvar
+        {% else %}
+            Criar
+        {% endif %}
     </button>
 
 </form>

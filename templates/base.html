@@ -9,9 +9,10 @@
     {% endblock %}
 </head>
 
-<body>
+<body style="display: flex; flex-direction: column;  background-color: #F5F1E8; color: #2B2118 ; padding: 0rem; margin: 0rem">
+    
     {% block header %}
-    <div style="display: flex; flex-direction: row; gap: 1rem;">
+    <div style="display: flex; flex-direction: row; gap: 1rem; background-color: #E8E0D0; color: #6B5D4F ; padding: 1rem">
         <a href="{% url 'livros' %}" >
             Listagem de livros
         </a>
@@ -23,11 +24,16 @@
         </a>
     </div>
     {% endblock %}
-
-    {% block main %}
-    {% endblock %}
+    <main  style="display: flex; flex-direction: column; padding: 1rem">
+        {% block main %}
+        {% endblock %}
+    </main>
     
     {% block footer %}
+    <footer style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; background-color: #E8E0D0; color: #6B5D4F ; padding: 1rem">
+        <p>Desenvolvido por Guilherme de Oliveira</p>
+        <p><a href="{% url 'sobre' %}">Sobre a biblioteca</a></p>
+    </footer>
     {% endblock %}
 </body>
 

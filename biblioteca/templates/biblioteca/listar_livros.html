@@ -12,7 +12,9 @@
         {% else %}
             <p>Capa não disponível.</p>
         {% endif %}
-        {{ book.title }} -
+        <a href="{% url 'livro' book.id %}">
+            {{ book.title }} -
+        </a>
         {% for author in book.authors.all %}
         <a href="{% url 'autor' author.id %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}
         {% empty %}

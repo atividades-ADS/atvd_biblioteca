@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction
+from django.urls import reverse_lazy
 from django.utils.http import url_has_allowed_host_and_scheme
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView, TemplateView
 from .models import *
 from .forms import *
 
 # Create your views here.
 
+"""
 def listar_livros(request):
     books = Book.objects.all()
     
@@ -15,7 +18,6 @@ def listar_livros(request):
     
     return render(request, 'biblioteca/listar_livros.html', contexto)
 
-"""
 
 def livros_create(request):
     if request.method == "POST":
@@ -34,7 +36,6 @@ def livros_create(request):
         
     return render(request, "biblioteca/criar_livro.html", {"form": form})
     
-"""
     
 def livros_create_modelform(request, pk=None, ):
     if pk:
@@ -88,3 +89,66 @@ def author_create(request):
         form = AuthorForm()
     
     return render(request, "biblioteca/criar_autor.html", {"form": form})
+"""
+
+
+class Listar_livros(ListView):
+    model = Book
+    template_name = 'biblioteca/listar_livros.html'
+    context_object_name = 'books'
+    
+    def get_queryset(self):
+        return Book.objects.order_by("-title")[:10]
+    
+class Livro_detail(DetailView):
+    model = Book
+    template_name = 'biblioteca/livro.html'
+    context_object_name = 'book'
+    pk_url_kwarg = 'pk'
+    
+
+class Livros_create(CreateView):
+    model = Book
+    form_class = BookModelForm
+    template_name = 'biblioteca/criar_livro.html'
+    success_url = reverse_lazy('livros')
+    
+class Livros_edit(UpdateView):
+    model = Book
+    form_class = BookModelForm
+    template_name = 'biblioteca/criar_livro.html'
+    success_url = reverse_lazy('livros')
+
+
+class Livros_delete(DeleteView):
+    model = Book
+    success_url = reverse_lazy('livros')
+
+class Listar_autores(ListView):
+    model = Author
+    template_name = 'biblioteca/listar_autores.html'
+    context_object_name = 'authors'
+    
+class Author_detail(DetailView):
+    model = Author
+    template_name = 'biblioteca/autor.html'
+    context_object_name = 'author'
+    pk_url_kwarg = 'author_id'
+    
+class Author_create(CreateView):
+    model = Author
+    form_class = AuthorModelForm
+    template_name = 'biblioteca/criar_autor.html'
+    success_url = reverse_lazy('livros')
+    
+class Author_edit(UpdateView):
+    model = Author
+    form_class = AuthorModelForm
+    template_name = 'biblioteca/criar_autor.html'
+    success_url = reverse_lazy('livros')
+    
+    
+    
+class sobre(TemplateView):
+    template_name = 'biblioteca/sobre.html'
+    

@@ -52,6 +52,11 @@ class BookForm(forms.Form):
 
 
 
+
+
+# Formulário baseado em ModelForm 
+
+
 class BookModelForm(forms.ModelForm):
     
     def clean_title(self):
@@ -74,3 +79,23 @@ class BookModelForm(forms.ModelForm):
             "category": forms.CheckboxSelectMultiple,
             "authors": forms.CheckboxSelectMultiple,
         }
+        
+        
+class AuthorModelForm(forms.ModelForm):
+    def clean(self):
+
+        cleaned_data = super().clean()
+
+        nationality = cleaned_data.get("nationality")
+
+       
+        if nationality and len(nationality) > 50:
+            self.add_error("nationality", "Esté campo aceita até 50 caracteres.")
+
+        return cleaned_data
+    
+    class Meta:
+        model = Author
+        fields = "__all__"
+    
+    

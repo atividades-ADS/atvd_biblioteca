@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Sobre a biblioteca</title>
+{% endblock %}
+{% block main %}
+<a href="{% url 'livros' %}">Voltar</a>
+<h1>Sobre a biblioteca</h1>
+<p>
+    Esta biblioteca foi criada para fins acadêmicos, como parte de um projeto de desenvolvimento de sistemas web. 
+    Ela permite gerenciar livros e autores, oferecendo funcionalidades para adicionar, editar e excluir registros. 
+    O objetivo é fornecer uma plataforma simples e eficiente para organizar informações sobre obras literárias e seus respectivos
+    autores, facilitando o acesso e a manutenção desses dados.
+</p>
+
+{% endblock %}

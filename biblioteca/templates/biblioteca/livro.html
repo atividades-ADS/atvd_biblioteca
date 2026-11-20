@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Livro</title>
+{% endblock %}
+{% block main %}
+{% if book.capa %}
+<img src="{{ book.capa.url }}" alt="Capa do livro {{ book.title }}" width="128">
+{% endif %}
+<h1>{{ book.title }} ({{ book.year }})</h1>
+<a href="{% url 'editar_livro' book.id %}">Editar</a>
+<a href="{% url 'excluir_livro' book.id %}">Excluir</a>
+<ul id="lista">
+    {% for author in book.authors.all %}
+    <li>
+        Nome: {{ author.name }} /
+        Nacionalidade: {{ author.nationality }}.
+        <a href="{% url 'editar_autor' author.id %}">editar</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
