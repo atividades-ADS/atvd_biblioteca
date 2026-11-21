@@ -1,0 +1,453 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-09-22T17:31:14.834Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Anna Karenina - 1878 - DisponÝvel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-09-22T17:34:01.824Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Romeu e Julieta - 1591 - DisponÝvel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-09-22T17:34:32.508Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "A tempestade - 1610 - DisponÝvel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-10-11T00:55:53.873Z",
+    "user": 2,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "abc",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-11-19T13:22:15.236Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Terror",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-11-19T13:22:18.608Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Romance",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-11-19T13:22:22.582Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "InspiraþÒo",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-11-19T13:22:27.850Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "FicþÒo",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-11-19T13:22:32.362Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "5",
+    "object_repr": "Biografia",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-11-19T13:24:03.525Z",
+    "user": 2,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "Romßrio",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-11-19T13:24:17.680Z",
+    "user": 2,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "Tchay Kowisk",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-11-19T13:24:24.985Z",
+    "user": 2,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Pato",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-11-19T13:24:31.276Z",
+    "user": 2,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Stuart",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$8pmhqzW7hqyvnbLdfIl3Kv$Szd1feRUQg9k4kZekWcoXOinWYFrmp7moqHCRS9FEQg=",
+    "last_login": "2026-09-22T17:26:17.987Z",
+    "is_superuser": true,
+    "username": "matheus",
+    "first_name": "",
+    "last_name": "",
+    "email": "matheus@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-22T17:24:31.574Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$OmQlZzHUKzR4ymLuCUeWaM$eQBQMTTxDi2k6YHZmEjPBRj/JboOsAZTeukoBKARXBk=",
+    "last_login": "2026-11-19T13:22:08.005Z",
+    "is_superuser": true,
+    "username": "m",
+    "first_name": "",
+    "last_name": "",
+    "email": "m@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-11T00:55:23.946Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "fvbry587dgo59wa16xoa2r52wzm4i1ux",
+  "fields": {
+    "session_data": ".eJxVjMEKwjAQRP8lZwntJinRo3e_IWSzu6YqCTTtSfx3U-hBYWBg3sy8VYjbmsPWeAkzqYsCdfrNMKYnlx3QI5Z71amWdZlR7xV90KZvlfh1Pbp_Bzm23NecnEFxA8AAZx-lK3khntCzGwk8i2NHTCB2smitFwQj3cCMTKw-XwohOQM:1xFhqj:m8YTGljnC923rBUosw0tIX6YGPTbJC9CQHaSKZbcnQg",
+    "expire_date": "2026-10-25T00:55:37.333Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "kfomc2segkzqjrs9uldyhitjrs5d0i5n",
+  "fields": {
+    "session_data": ".eJxVjMEKwjAQRP8lZwntJinRo3e_IWSzu6YqCTTtSfx3U-hBYWBg3sy8VYjbmsPWeAkzqYsCdfrNMKYnlx3QI5Z71amWdZlR7xV90KZvlfh1Pbp_Bzm23NecnEFxA8AAZx-lK3khntCzGwk8i2NHTCB2smitFwQj3cCMTKw-XwohOQM:1xU25Y:oPbjGr8XGmzjpRezHZLQ6RtVodUTQGEXcuVU-_jS1Y0",
+    "expire_date": "2026-12-03T13:22:08.013Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yuxr9bryj5f1mx07l19sr3vktj3clhcs",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWmYtlDq0r1nIDPTGUENTSisjHdXEha6_e-9_zIDbus4bFWWYcrmbMCcfjdCfsi8g3zH-VYsl3ldJrK7Yg9a7bVkeV4O9-9gxDp-aw6paxvMqkQuJtcDE4GkqBAT9CKQJXJQhL7tKDI59oqqDST1PpB5fwAAsDjJ:1x94G1:pAA274RsTOnAjN177VMzNm2_i3SEGKX1e5Xz6cieBSQ",
+    "expire_date": "2026-10-06T17:26:17.987Z"
+  }
+},
+{
+  "model": "biblioteca.author",
+  "pk": 1,
+  "fields": {
+    "name": "Stuart",
+    "nationality": "a"
+  }
+},
+{
+  "model": "biblioteca.author",
+  "pk": 2,
+  "fields": {
+    "name": "Fßbio Culler",
+    "nationality": ""
+  }
+},
+{
+  "model": "biblioteca.author",
+  "pk": 3,
+  "fields": {
+    "name": "Pato",
+    "nationality": null
+  }
+},
+{
+  "model": "biblioteca.author",
+  "pk": 4,
+  "fields": {
+    "name": "Tchay Kowisk",
+    "nationality": null
+  }
+},
+{
+  "model": "biblioteca.author",
+  "pk": 5,
+  "fields": {
+    "name": "Romßrio",
+    "nationality": null
+  }
+},
+{
+  "model": "biblioteca.author",
+  "pk": 6,
+  "fields": {
+    "name": "eu",
+    "nationality": null
+  }
+},
+{
+  "model": "biblioteca.author",
+  "pk": 7,
+  "fields": {
+    "name": "aqui",
+    "nationality": null
+  }
+},
+{
+  "model": "biblioteca.category",
+  "pk": 1,
+  "fields": {
+    "name": "Terror"
+  }
+},
+{
+  "model": "biblioteca.category",
+  "pk": 2,
+  "fields": {
+    "name": "Romance"
+  }
+},
+{
+  "model": "biblioteca.category",
+  "pk": 3,
+  "fields": {
+    "name": "InspiraþÒo"
+  }
+},
+{
+  "model": "biblioteca.category",
+  "pk": 4,
+  "fields": {
+    "name": "FicþÒo"
+  }
+},
+{
+  "model": "biblioteca.category",
+  "pk": 5,
+  "fields": {
+    "name": "Biografia"
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 1,
+  "fields": {
+    "capa": "capas/Frame_479.png",
+    "titulo": "Anna Karenina",
+    "ano_publicacao": 1878,
+    "paginas": null,
+    "isbn": null,
+    "disponivel": true,
+    "authors": [
+      2,
+      1
+    ],
+    "categories": [
+      2
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 2,
+  "fields": {
+    "capa": "capas/pexels-elmedionoob-33524619.jpg",
+    "titulo": "Romeu e Julieta",
+    "ano_publicacao": 1591,
+    "paginas": null,
+    "isbn": "1111111111111",
+    "disponivel": false,
+    "authors": [
+      2
+    ],
+    "categories": []
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 3,
+  "fields": {
+    "capa": "capas/IMG-20250407-WA0050.jpg",
+    "titulo": "A tempestade",
+    "ano_publicacao": 1610,
+    "paginas": null,
+    "isbn": null,
+    "disponivel": true,
+    "authors": [
+      2,
+      1
+    ],
+    "categories": [
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 4,
+  "fields": {
+    "capa": "capas/IMG_20251014_145813.jpg",
+    "titulo": "Salus O System",
+    "ano_publicacao": 2000,
+    "paginas": 11,
+    "isbn": "1234567809011",
+    "disponivel": true,
+    "authors": [
+      1
+    ],
+    "categories": [
+      1,
+      2,
+      5
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 5,
+  "fields": {
+    "capa": "capas/LOGO5_Nr7XAZz.png",
+    "titulo": "Estrelas do ceu",
+    "ano_publicacao": 1500,
+    "paginas": null,
+    "isbn": null,
+    "disponivel": true,
+    "authors": [
+      2
+    ],
+    "categories": [
+      1
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 6,
+  "fields": {
+    "capa": "capas/SPLASH.png",
+    "titulo": "aaa",
+    "ano_publicacao": 1500,
+    "paginas": null,
+    "isbn": null,
+    "disponivel": true,
+    "authors": [
+      2
+    ],
+    "categories": [
+      1
+    ]
+  }
+},
+{
+  "model": "biblioteca.livro",
+  "pk": 7,
+  "fields": {
+    "capa": "capas/cerebro_mindMeet_anotacoes_sombra.png",
+    "titulo": "Cerebrinho",
+    "ano_publicacao": 2026,
+    "paginas": null,
+    "isbn": null,
+    "disponivel": false,
+    "authors": [
+      7
+    ],
+    "categories": [
+      3,
+      4
+    ]
+  }
+}
+]

@@ -106,3 +106,7 @@ media/
 *.pyc
 *.db
 *.pid
+
+#AtvIrlan SGBD
+.env
+db.sqlite3
