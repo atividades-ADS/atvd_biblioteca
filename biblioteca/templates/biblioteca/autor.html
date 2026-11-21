@@ -7,7 +7,7 @@
 <h2>Nacionalidade: {{ author.nationality }}</h2>
 <h2>Livros do Autor</h2>
 <ul id="lista">
-    {% for book in books %}
+    {% for book in author.books_tmp.all %}
     <li>
         {% if book.capa %}
             <img src="{{ book.capa.url }}" alt="Capa do livro {{ book.title }}" width="64">
@@ -19,5 +19,6 @@
         <a href="{% url 'editar_livro' book.id %}?next={% url 'autor' author.id %}">editar</a>
     </li>
     {% endfor %}
+    
 </ul>
 {% endblock %}

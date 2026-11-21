@@ -142,7 +142,6 @@ class Author_detail(DetailView):
     model = Author
     template_name = 'biblioteca/autor.html'
     context_object_name = 'author'
-    pk_url_kwarg = 'author_id'
     
 class Author_create(CreateView):
     model = Author
