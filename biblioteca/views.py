@@ -1,12 +1,17 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction
 from django.urls import reverse_lazy
-from django.utils.http import url_has_allowed_host_and_scheme
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView, TemplateView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+    TemplateView,
+)
 from .models import *
 from .forms import *
 
-# Create your views here.
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 """
 def listar_livros(request):
@@ -92,14 +97,14 @@ def author_create(request):
 """
 
 
-class Listar_livros(ListView):
+class Listar_livros(LoginRequiredMixin, ListView):
     model = Book
-    template_name = 'biblioteca/listar_livros.html'
-    context_object_name = 'books'
-    
+    template_name = "biblioteca/listar_livros.html"
+    context_object_name = "books"
+
     def get_queryset(self):
         return Book.objects.order_by("-title")
-    
+
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
@@ -107,56 +112,69 @@ class Listar_livros(ListView):
         context["availables"] = Book.objects.filter(available=True).count()
 
         return context
-        
-    
-class Livro_detail(DetailView):
-    model = Book
-    template_name = 'biblioteca/livro.html'
-    context_object_name = 'book'
-    pk_url_kwarg = 'pk'
-    
 
-class Livros_create(CreateView):
+
+class Livro_detail(LoginRequiredMixin, DetailView):
     model = Book
-    form_class = BookModelForm
-    template_name = 'biblioteca/criar_livro.html'
-    success_url = reverse_lazy('livros')
-    
-class Livros_edit(UpdateView):
+    template_name = "biblioteca/livro.html"
+    context_object_name = "book"
+    pk_url_kwarg = "pk"
+
+
+class Livros_create(LoginRequiredMixin, CreateView):
     model = Book
     form_class = BookModelForm
-    template_name = 'biblioteca/criar_livro.html'
-    success_url = reverse_lazy('livros')
+    template_name = "biblioteca/criar_livro.html"
+    success_url = reverse_lazy("livros")
+
+    def form_valid(self, form):
+        form.instance.registered_by = self.request.user
+        return super().form_valid(form)
 
 
-class Livros_delete(DeleteView):
+class Livros_edit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Book
-    success_url = reverse_lazy('livros')
+    form_class = BookModelForm
+    template_name = "biblioteca/criar_livro.html"
+    success_url = reverse_lazy("livros")
 
-class Listar_autores(ListView):
+    def test_func(self):
+        return self.get_object().registered_by == self.request.user
+
+
+class Livros_delete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Book
+    success_url = reverse_lazy("livros")
+
+    def test_func(self):
+        return self.get_object().registered_by == self.request.user
+
+
+class Listar_autores(LoginRequiredMixin, ListView):
     model = Author
-    template_name = 'biblioteca/listar_autores.html'
-    context_object_name = 'authors'
-    
-class Author_detail(DetailView):
+    template_name = "biblioteca/listar_autores.html"
+    context_object_name = "authors"
+
+
+class Author_detail(LoginRequiredMixin, DetailView):
     model = Author
-    template_name = 'biblioteca/autor.html'
-    context_object_name = 'author'
-    
-class Author_create(CreateView):
+    template_name = "biblioteca/autor.html"
+    context_object_name = "author"
+
+
+class Author_create(LoginRequiredMixin, CreateView):
     model = Author
     form_class = AuthorModelForm
-    template_name = 'biblioteca/criar_autor.html'
-    success_url = reverse_lazy('livros')
-    
-class Author_edit(UpdateView):
+    template_name = "biblioteca/criar_autor.html"
+    success_url = reverse_lazy("livros")
+
+
+class Author_edit(LoginRequiredMixin, UpdateView):
     model = Author
     form_class = AuthorModelForm
-    template_name = 'biblioteca/criar_autor.html'
-    success_url = reverse_lazy('livros')
-    
-    
-    
-class sobre(TemplateView):
-    template_name = 'biblioteca/sobre.html'
-    
+    template_name = "biblioteca/criar_autor.html"
+    success_url = reverse_lazy("livros")
+
+
+class sobre(LoginRequiredMixin, TemplateView):
+    template_name = "biblioteca/sobre.html"

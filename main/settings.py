@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'biblioteca',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,7 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGIN_URL='users:login'
+LOGIN_REDIRECT='biblioteca:livros'
+LOGOUT_REDIRECT='users:login'

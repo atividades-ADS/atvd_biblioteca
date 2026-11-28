@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    {{form.as_div}}
+    <input type="hidden" name="next" value="{{next}}" />
+    <button type="submit">Login</button>
+</form>
+<p>
+    Não tem cadastro? <a href="{% url 'users:signup' %}">Cadastre-se</a>
+</p>
+{% endblock %}
